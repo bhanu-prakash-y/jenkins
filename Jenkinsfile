@@ -10,6 +10,7 @@ pipeline {
                 script{
                     sh """
                         echo "Building"
+                        exit 1
                     """
                     
                 }
@@ -38,6 +39,12 @@ pipeline {
     post {
         always {
             echo "I always run"
+        }
+        success {
+            echo "I run only if the build succeeds"
+        }
+        failure {
+            echo "I run only if the build fails"
         }
     }
 }
