@@ -1,13 +1,17 @@
 pipeline {
+    // agent section is used to define where the pipeline will run
     agent {
         node {
             label 'ROBOSHOP'
         }
     }
+    // environment section is used to define environment variables that can be used throughout the pipeline
     environment {
         course = "DevOps"
-
     }
+    options {
+        disableConcurrentBuilds()   
+  }
     stages {
         stage('Build') {
             steps {
