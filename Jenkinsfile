@@ -4,13 +4,17 @@ pipeline {
             label 'ROBOSHOP'
         }
     }
+    environment {
+        course = "DevOps"
+
+    }
     stages {
         stage('Build') {
             steps {
                 script{
                     sh """
                         echo "Building"
-                        exit 1
+                        echo $course
                     """
                     
                 }
