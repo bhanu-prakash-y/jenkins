@@ -19,7 +19,7 @@ pipeline {
                     sh """
                         echo "Building"
                         echo $course
-                        sleep 10
+                        sleep 5
                     """
                     
                 }
