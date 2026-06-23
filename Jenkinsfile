@@ -9,10 +9,18 @@ pipeline {
     environment {
         course = "DevOps"
     }
+    //options section is used to define options that can be applied to the entire pipeline
     options {
         disableConcurrentBuilds()
-        timeout(time: 5, unit: 'SECONDS') 
+        timeout(time: 5, unit: 'minutes') 
   }
+    parameters {
+        string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Branch to build')
+        text(name: 'DEPLOY_ENV', defaultValue: 'dev', description: 'Deployment environment')
+        booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Run tests after build')
+        choice(name: 'DEPLOY_STRATEGY', choices: ['blue-green', 'rolling', 'canary'], description: 'Deployment strategy')
+        password(name: 'NEXUS_PASSWORD', defaultValue: '', description: 'Nexus password')
+    }
     stages {
         stage('Build') {
             steps {
@@ -31,6 +39,11 @@ pipeline {
                 script {
                     sh """
                         echo "Testing"
+                        echo "Hello ${params.PERSON}"
+                        echo "Biography: ${params.BIOGRAPHY}"
+                        echo "Toggle: ${params.TOGGLE}"
+                        echo "Choice: ${params.DEPLOY}" 
+                        echo "Password: ${params.PASSWORD}"
                     """
                 }
             }
