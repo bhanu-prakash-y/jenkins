@@ -34,4 +34,10 @@ pipeline {
             }
         }
     }
+    // post build actions
+    post {
+        always {
+            echo "I always run"
+        }
+    }
 }
