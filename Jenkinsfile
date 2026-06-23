@@ -12,7 +12,7 @@ pipeline {
     //options section is used to define options that can be applied to the entire pipeline
     options {
         disableConcurrentBuilds()
-        timeout(time: 5, unit: 'minutes') 
+        timeout(time: 5, unit: 'MINUTES') 
   }
     parameters {
         string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Branch to build')
