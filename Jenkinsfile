@@ -10,7 +10,8 @@ pipeline {
         course = "DevOps"
     }
     options {
-        disableConcurrentBuilds()   
+        disableConcurrentBuilds()
+        timeout(time: 5, unit: 'SECONDS') 
   }
     stages {
         stage('Build') {
