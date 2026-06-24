@@ -49,6 +49,14 @@ pipeline {
             }
         }
         stage('Deploy') {
+            input {
+                message "shuold we continue with deployment?"
+                ok "Deploy"
+                submitter "admin"
+                parameters {
+                    string(name: 'DEPLOY_ENV', defaultValue: 'dev', description: 'Deployment environment')
+                }
+            }
             steps {
                 script {
                     sh """
